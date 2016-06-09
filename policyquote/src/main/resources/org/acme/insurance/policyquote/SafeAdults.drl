@@ -1,0 +1,23 @@
+//created on: 09-Jun-2016
+package org.acme.insurance.policyquote
+
+//list any import classes here.
+import org.acme.insurance.Driver
+import org.acme.insurance.Policy
+
+//declare any global variables here
+
+
+rule "SafeAdults"
+
+    when
+        //conditions
+        driver : Driver(age > 24, numberOfAccidents < 1 || numberOfTickets <=1)
+		policy : Policy(price == null, policyType == "AUTO")
+    then
+        //actions
+        modify(policy) {setPrice(120)};
+        System.out.println("fired rule " + kcontext.getRule().getName());
+end
+
+
