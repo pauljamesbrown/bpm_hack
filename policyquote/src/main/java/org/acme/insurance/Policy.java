@@ -16,6 +16,25 @@ public class Policy implements java.io.Serializable
    @javax.persistence.SequenceGenerator(name = "POLICY_ID_GENERATOR", sequenceName = "POLICY_ID_SEQ")
    private java.lang.Long id;
 
+   @org.kie.api.definition.type.Label(value = "Request Date")
+   private java.util.Date requestDate;
+
+   @org.kie.api.definition.type.Label(value = "Policy Type")
+   private java.lang.String policyType;
+
+   @org.kie.api.definition.type.Label(value = "Vehicle Year")
+   private java.lang.Integer vehicleYear;
+
+   @org.kie.api.definition.type.Label(value = "Price")
+   private java.lang.Integer price;
+
+   @org.kie.api.definition.type.Label(value = "Price Discount")
+   private java.lang.Integer priceDiscount;
+
+   @javax.persistence.ManyToOne(fetch = javax.persistence.FetchType.EAGER, cascade = { javax.persistence.CascadeType.ALL })
+   @org.kie.api.definition.type.Label(value = "Driver")
+   private org.acme.insurance.Driver driver;
+
    public Policy()
    {
    }
@@ -30,9 +49,78 @@ public class Policy implements java.io.Serializable
       this.id = id;
    }
 
-   public Policy(java.lang.Long id)
+   public java.util.Date getRequestDate()
+   {
+      return this.requestDate;
+   }
+
+   public void setRequestDate(java.util.Date requestDate)
+   {
+      this.requestDate = requestDate;
+   }
+
+   public java.lang.String getPolicyType()
+   {
+      return this.policyType;
+   }
+
+   public void setPolicyType(java.lang.String policyType)
+   {
+      this.policyType = policyType;
+   }
+
+   public java.lang.Integer getVehicleYear()
+   {
+      return this.vehicleYear;
+   }
+
+   public void setVehicleYear(java.lang.Integer vehicleYear)
+   {
+      this.vehicleYear = vehicleYear;
+   }
+
+   public java.lang.Integer getPrice()
+   {
+      return this.price;
+   }
+
+   public void setPrice(java.lang.Integer price)
+   {
+      this.price = price;
+   }
+
+   public java.lang.Integer getPriceDiscount()
+   {
+      return this.priceDiscount;
+   }
+
+   public void setPriceDiscount(java.lang.Integer priceDiscount)
+   {
+      this.priceDiscount = priceDiscount;
+   }
+
+   public org.acme.insurance.Driver getDriver()
+   {
+      return this.driver;
+   }
+
+   public void setDriver(org.acme.insurance.Driver driver)
+   {
+      this.driver = driver;
+   }
+
+   public Policy(java.lang.Long id, java.util.Date requestDate,
+         java.lang.String policyType, java.lang.Integer vehicleYear,
+         java.lang.Integer price, java.lang.Integer priceDiscount,
+         org.acme.insurance.Driver driver)
    {
       this.id = id;
+      this.requestDate = requestDate;
+      this.policyType = policyType;
+      this.vehicleYear = vehicleYear;
+      this.price = price;
+      this.priceDiscount = priceDiscount;
+      this.driver = driver;
    }
 
 }
